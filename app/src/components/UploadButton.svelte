@@ -1,5 +1,5 @@
 <script>
-    import {image, uploaded, preview} from "../helpers/store";
+    import {image, uploaded, preview, uploadInProgress} from "../helpers/store";
     import {fade} from 'svelte/transition';
 
     let inputElement
@@ -28,8 +28,10 @@
             return
         }
 
-        image.set(selectedImage)
+        uploadInProgress.set(true);
+        image.set(selectedImage);
         uploaded.set(true)
+
 
         //Turn selected file into previewable image and save to store
         let reader = new FileReader();
@@ -59,7 +61,7 @@
             selectImage.call(e.dataTransfer);
         }
 
-        function preventDefaults (e) {
+        function preventDefaults(e) {
             e.preventDefault()
             e.stopPropagation()
         }
@@ -78,17 +80,33 @@
 <main>
     <!-- Select Image Button -->
     <div class="largerUpload" class:draggedOn={draggedOn} use:dragUpload>
-        <div class:visible={draggedOn} class="dragScreen"></div>
+        <div class="dragScreen" class:visible={draggedOn}></div>
         <div class="uploadText">
             <div class="title">Similarity Search</div>
             <div class="subtitle desktop-subtitle">Drag and drop or select an image to view similar products</div>
             <div class="subtitle touch-subtitle">Select an image to view similar products</div>
         </div>
 
-        <div class="select" on:click={() => inputElement.click()}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><polyline points="7 9 12 4 17 9"></polyline><line x1="12" y1="4" x2="12" y2="16"></line></svg>
-            Select Image
-        </div>
+        {#if !$uploadInProgress}
+            <div class="select" on:click={() => inputElement.click()}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                    <polyline points="7 9 12 4 17 9"></polyline>
+                    <line x1="12" y1="4" x2="12" y2="16"></line>
+                </svg>
+                Select Image
+            </div>
+        {:else}
+            <div class="select">
+                <div class="loadingDots">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot3"></div>
+                </div>
+            </div>
+        {/if}
     </div>
 
 
@@ -125,8 +143,9 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      background-color: rgba(20,115,230,0.1);
+      background-color: rgba(20, 115, 230, 0.1);
       display: none;
+
       &.visible {
         display: block;
       }
@@ -170,10 +189,47 @@
       margin-bottom: 3em;
       display: flex;
       align-items: center;
+      width: 10.5em;
+      height: 3em;
+      justify-content: center;
 
       svg {
         margin-right: 5px;
         width: 24px;
+      }
+
+      .loadingDots {
+        .dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 20px;
+          background-color: white;
+          color: white;
+          display: inline-block;
+          margin: 0 auto;
+          transform: translateY(0px);
+          animation: loadingAnimation 1s infinite ease-in-out;
+
+          &.dot1 {
+            animation-delay: 0s;
+          }
+
+          &.dot2 {
+            animation-delay: 0.1s;
+          }
+
+          &.dot3 {
+            animation-delay: 0.2s;
+          }
+        }
+
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 20px;
       }
     }
   }
@@ -182,6 +238,21 @@
     display: none;
   }
 
+
+  @keyframes loadingAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    25%, 50%, 75% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+  }
 
 
   @media screen and (max-width: 800px) {
@@ -197,4 +268,6 @@
       margin-bottom: 1.5em !important;
     }
   }
+
+
 </style>

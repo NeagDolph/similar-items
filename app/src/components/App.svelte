@@ -6,10 +6,9 @@
 </script>
 
 <main>
+    <UploadButton/>
     {#if $uploaded}
         <Results/>
-    {:else}
-        <UploadButton/>
     {/if}
 </main>
 

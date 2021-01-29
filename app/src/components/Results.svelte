@@ -1,11 +1,11 @@
 <script>
-    import {image, preview, uploaded} from "../helpers/store";
+    import {image, uploadInProgress} from "../helpers/store";
     import axios from "axios";
     import Product from "./Product.svelte";
 
     let results;
 
-    $: if (!results) {
+    $: {
         let bodyFormData = new FormData();
         bodyFormData.append("file", $image);
         axios({
@@ -14,9 +14,8 @@
             data: bodyFormData
         })
             .then(res => {
-                //Remove duplicate
                 results = res.data[1].recommendations
-                console.log(results, res.data[0].recommendations)
+                uploadInProgress.set(false);
             })
     }
 
@@ -25,18 +24,16 @@
 
 <slot>
     {#if results}
-        <div>
+        <div class="resultsWrapper">
             {#each results as result}
                 <Product data={result}/>
             {/each}
         </div>
-    {:else}
-        <h1>Loading...</h1>
     {/if}
 </slot>
 
 <style type="text/scss">
-  div {
+  .resultsWrapper {
     display: flex;
     flex-direction: row;
 
