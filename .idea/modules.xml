@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/augmentedreality.iml" filepath="$PROJECT_DIR$/.idea/augmentedreality.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/similarsearch.iml" filepath="$PROJECT_DIR$/.idea/similarsearch.iml" />
     </modules>
   </component>
 </project>

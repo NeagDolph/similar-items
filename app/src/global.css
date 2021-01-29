@@ -1,0 +1,30 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-regular.eot?yocs=28_');
+    src: local('Open Sans'), local('OpenSans'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-regular.eot#iefix?yocs=28_') format('embedded-opentype'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-regular.woff2?yocs=n_28_') format('woff2'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-regular.woff?yocs=n_28_A_') format('woff'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-regular.ttf?yocs=n_28_') format('truetype'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-regular.svg#OpenSans?yocs=28_') format('svg');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-600.eot?yocs=28_');
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-600.eot#iefix?yocs=28_') format('embedded-opentype'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-600.woff2?yocs=n_28_') format('woff2'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-600.woff?yocs=n_28_A_') format('woff'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-600.ttf?yocs=n_28_') format('truetype'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-600.svg#OpenSans?yocs=28_') format('svg');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-700.eot?yocs=28_');
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-700.eot#iefix?yocs=28_') format('embedded-opentype'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-700.woff2?yocs=n_28_') format('woff2'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-700.woff?yocs=n_28_A_') format('woff'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-700.ttf?yocs=n_28_') format('truetype'), url('https://cdn-fsly.yottaa.net/5880f4d8312e5807a100002a/www.shoplc.com/v~4b.b00/_ui/responsive/theme-lc/fonts/open-sans-v13-latin-700.svg#OpenSans?yocs=28_') format('svg');
+}
