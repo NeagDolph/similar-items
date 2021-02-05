@@ -1,15 +1,16 @@
 <script>
     export let data;
+    export let config;
 </script>
 
 <slot>
     <div class="product">
         <div class="imageWrapper">
-            <a href={`https://www.shoplc.com/p/${data.sku}`} target="_blank">
+            <a href={`${config.image}${data.sku}`}>
                 <img src="{data.image_url}" alt={data.caption}>
             </a>
         </div>
-        <a href={`https://www.shoplc.com/p/${data.sku}`} target="_blank">
+        <a href={`${config.image}${data.sku}`}>
             <div class="descriptionWrapper">
                 <div class="clampWrapper">
                     {data.caption}

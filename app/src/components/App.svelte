@@ -3,12 +3,13 @@
     import Results from "./Results.svelte"
     import {uploaded} from "../helpers/store.js";
     import "../global.css";
+    import config from "../config.json";
 </script>
 
 <main>
-    <UploadButton/>
+    <UploadButton config={config}/>
     {#if $uploaded}
-        <Results/>
+        <Results config={config}/>
     {/if}
 </main>
 

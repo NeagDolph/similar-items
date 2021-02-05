@@ -1,6 +1,8 @@
 <script>
-    import {image, uploaded, preview, uploadInProgress} from "../helpers/store";
+    import {image, uploaded, preview, uploadInProgress, category, score} from "../helpers/store";
     import {fade} from 'svelte/transition';
+
+    export let config;
 
     let inputElement
     let selectedImage
@@ -10,6 +12,35 @@
         show: false
     }
     let draggedOn = false;
+    let textColor
+    let bgColor
+    let previewImage = {complete: false}
+    let colors = [
+        {
+            bg: "#001f3f",
+            color: "hsla(210, 100%, 75%, 1.0)"
+        },
+        {
+            bg: "#7FDBFF",
+            color: "hsla(210, 100%, 75%, 1.0)"
+        },
+        {
+            bg: "#3D9970",
+            color: "hsla(153, 43%, 15%, 1.0)"
+        },
+        {
+            bg: "#01FF70",
+            color: "hsla(146, 100%, 20%, 1.0)"
+        },
+        {
+            bg: "#FF851B",
+            color: "hsla(28, 100%, 20%, 1.0)"
+        },
+        {
+            bg: "#B10DC9",
+            color: "hsla(292, 88%, 82%, 1.0)"
+        },
+    ]
 
     function showAlert(message, time) {
         alert = {
@@ -24,7 +55,7 @@
         selectedImage = this.files[0]
 
         if (!selectedImage.type.includes("image")) {
-            showAlert("Uploaded file must be image", 500);
+            showAlert(config.error.filetype, 1500);
             return
         }
 
@@ -87,6 +118,18 @@
             <div class="subtitle touch-subtitle">Select an image to view similar products</div>
         </div>
 
+        {#if $preview}
+            <div class="preview">
+                <img src={$preview} alt={$category}>
+                {#if $category}
+                    <div class="categoryTitle">
+                        {$category}
+                        <span class="titleMatch">{Math.round($score * 100)}% match</span>
+                    </div>
+                {/if}
+            </div>
+        {/if}
+
         {#if !$uploadInProgress}
             <div class="select" on:click={() => inputElement.click()}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -99,7 +142,7 @@
                 Select Image
             </div>
         {:else}
-            <div class="select">
+            <div class="select" class:uploading={$uploadInProgress}>
                 <div class="loadingDots">
                     <div class="dot dot1"></div>
                     <div class="dot dot2"></div>
@@ -107,13 +150,10 @@
                 </div>
             </div>
         {/if}
+
+        <!-- Alert -->
+        {#if alert.show}<p class="alert" transition:fade={{duration: 500}}>{alert.text}</p>{/if}
     </div>
-
-
-    <!-- Alert -->
-    {#if alert.show}
-        <p transition:fade={{duration: 500}}>{alert.text}</p>
-    {/if}
     <input accept="image/*" bind:this={inputElement} type="file" use:handleFile>
 </main>
 
@@ -166,7 +206,7 @@
       }
 
       .subtitle {
-        margin: 15px 0 55px;
+        margin: 15px 0 35px;
         color: #515151;
         font-size: 17px;
 
@@ -174,6 +214,47 @@
 
       .touch-subtitle {
         display: none;
+      }
+    }
+
+    .preview {
+      height: 13em;
+      margin: 0px 0 25px;
+      width: fit-content;
+      display: flex;
+      position: relative;
+      justify-content: center;
+
+
+      img {
+        height: 100%;
+        max-width: 60vw;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 6px 0px;
+        border-radius: 5px;
+      }
+
+      .categoryTitle {
+        display: flex;
+        flex-direction: column;
+
+        .titleMatch {
+          width: 100%;
+          font-weight: 300;
+          color: #2b2b2b;
+          font-size: 11px;
+        }
+
+        position: absolute;
+        top: calc(100% - 20px);
+        padding: 5px 19px;
+        color: #111111;
+        font-size: 13px;
+        font-weight: 700;
+        background: #fef9ec;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
       }
     }
 
@@ -186,12 +267,17 @@
       color: white;
       cursor: pointer;
       font-size: 14px;
-      margin-bottom: 3em;
+      margin-bottom: 1.5em;
+      margin-top: 25px;
       display: flex;
       align-items: center;
       width: 10.5em;
       height: 3em;
       justify-content: center;
+
+      &.uploading {
+        margin-top: 10px !important;
+      }
 
       svg {
         margin-right: 5px;
@@ -236,6 +322,10 @@
 
   input {
     display: none;
+  }
+
+  .alert {
+    color: #f57474;
   }
 
 

@@ -1,0 +1,13 @@
+{
+  "api": {
+    "url": "https://vgl-poc.blackstrawlab.com/upload",
+    "keys": {
+      "api_key": "E935D32B761D564A1888F2A11712D"
+    }
+  },
+  "image": "https://www.shoplc.com/p/",
+  "error": {
+    "similar": "No similar images found.",
+    "filetype": "Uploaded file must be image"
+  }
+}
