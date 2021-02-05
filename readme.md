@@ -8,10 +8,10 @@
 
 
 > <h3>Beginning page</h3>
-> ![Screenshot](https://user-images.githubusercontent.com/26110352/107009101-35aa4180-675a-11eb-89f9-6edace4d4e8b.png)
+> <img src="https://user-images.githubusercontent.com/26110352/107009101-35aa4180-675a-11eb-89f9-6edace4d4e8b.png"/>
 >
 > <h3>Processing image</h3>
-> ![Screenshot](https://user-images.githubusercontent.com/26110352/107009112-380c9b80-675a-11eb-8cd9-dd0aa3c2dd47.png)
+> <img src="https://user-images.githubusercontent.com/26110352/107009112-380c9b80-675a-11eb-8cd9-dd0aa3c2dd47.png"/>
 <hr style="border:2px solid transparent"> </hr>
 
 ## Installation
