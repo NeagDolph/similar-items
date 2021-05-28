@@ -1,7 +1,6 @@
 # <h1>Similarity Search Interface</h1>
 
 ## Introduction
-https://lcimagesearch.lemontree.dev/
 > <h3>A web-based interface for interacting with the Similarity Search API</h3>
 > <h3><a href="https://lcimagesearch.lemontree.dev/">View Demo</a></h3>
 
